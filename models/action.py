@@ -22,11 +22,11 @@ class _subflow(action._action):
 			for subflowExecuteTriggerCache in self.subflowExecuteTriggerCache:
 				if not passData:
 					passData = copy.deepcopy(data)
-				subflowExecuteTriggerCache.notify(events=[passData["event"]],var=passData["var"],callingTriggerID=passData["triggerID"])
+				subflowExecuteTriggerCache.notify(events=[passData["event"]],var=passData["var"],callingTriggerID=passData["triggerID"],persistentData=persistentData)
 				passData = None
 		elif len(self.subflowExecuteTriggerCache) == 1:
 			subflowExecuteTriggerCache = self.subflowExecuteTriggerCache[0]
-			subflowExecuteTriggerCache.notify(events=[data["event"]],var=data["var"],callingTriggerID=data["triggerID"])
+			subflowExecuteTriggerCache.notify(events=[data["event"]],var=data["var"],callingTriggerID=data["triggerID"],persistentData=persistentData)
 
 		actionResult["result"] = True
 		actionResult["rc"] = 0
